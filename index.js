@@ -15,10 +15,14 @@ app.get('/', function (req, res) {
 
 // api to handle file upload
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => { // upfile is field name in the form in index.html
-  const filename = req.file.originalname
-  const filetype = req.file.mimetype
-  const filesize = req.file.size
-  res.json({ name: filename, type: filetype, size: filesize })
+  if (req.file !== undefined) {
+    const filename = req.file.originalname
+    const filetype = req.file.mimetype
+    const filesize = req.file.size
+    res.json({ name: filename, type: filetype, size: filesize })
+  } else {
+    res.json({ error: 'No File Uploaded' })
+  }
 })
 
 const port = process.env.PORT || 3000;

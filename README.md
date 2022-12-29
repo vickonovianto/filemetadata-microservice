@@ -14,3 +14,7 @@ This File Metadata Microservice handle API Endpoint at `/api/fileanalyse` which 
 ```Javascript
 {"name":"sample file.txt","type":"text/plain","size":264}
 ```
+If the file is not selected, but the submit button is selected on the form, then the API will return:
+```Javascript
+{"error":"No File Uploaded"}
+```
